@@ -1,53 +1,51 @@
-const time = document.getElementById("time");
-const weekday = document.getElementById("weekday");
-const month_g = document.getElementById("month-g");
-const month_h = document.getElementById("month-h");
-const year_h = document.getElementById("year-h");
-const full_date_g = document.getElementById("full-date-g");
-const date_h = document.getElementById("date-h");
+const ID_TIME = document.getElementById("time");
+const ID_WEEKDAY = document.getElementById("weekday");
+const ID_MONTH_G = document.getElementById("month-g");
+const ID_MONTH_H = document.getElementById("month-h");
+const ID_YEAR_H = document.getElementById("year-h");
+const ID_FULL_DATE_G = document.getElementById("full-date-g");
+const ID_DATE_H = document.getElementById("date-h");
 
-var s = "";
-var d = new Date();
+var date = new Date();
 
-// setTimeout(midnight,(milliseconds between midnight and current time))
-// setTimeout(maghrib, (ms between maghrib and currentime))
+// setTimeout(updateSolar,(milliseconds between midnight and current time))
+// setTimeout(updateHijri, (ms between maghrib and currentime))
 
 //All solar current day value initializations
-full_date_g.textContent = d.toLocaleDateString();
+ID_FULL_DATE_G.textContent = date.toLocaleDateString();
 
 
 //All hijree current day value initializations
-year_h.textContent = d.toLocaleString("ar-SA-u-ca-islamic-umalqura", {year:"numeric"})
-month_h.textContent = d.toLocaleString("ar-SA-u-ca-islamic-umalqura", {month:"long"})
-weekday.textContent = d.toLocaleString("ar-SA-u-ca-islamic-umalqura", {weekday:"long"})
-date_h.textContent = d.toLocaleString("ar-SA-u-ca-islamic-umalqura", {day:"2-digit"})
+ID_YEAR_H.textContent = date.toLocaleString("ar-SA-u-ca-islamic-umalqura", {year:"numeric"})
+ID_MONTH_H.textContent = date.toLocaleString("ar-SA-u-ca-islamic-umalqura", {month:"long"})
+ID_WEEKDAY.textContent = date.toLocaleString("ar-SA-u-ca-islamic-umalqura", {weekday:"long"})
+ID_DATE_H.textContent = date.toLocaleString("ar-SA-u-ca-islamic-umalqura", {day:"2-digit"})
 
 
-setInterval(update, 100);
+setInterval(updateClock, 1000);
 
-function update() {
+function updateClock() {
 
-	s = "";
-	d = new Date();
+	date = new Date();
 
-	time.textContent = d.toLocaleString("en-CA", {hour: "2-digit", minute: "2-digit", second: "2-digit"}).substring(0, 8);
+	ID_TIME.textContent = date.toLocaleString("en-CA", {hour: "2-digit", minute: "2-digit", second: "2-digit"}).substring(0, 8);
 
 }
 
-function midnight() {
+function updateSolar() {
 
-	setInterval(midnight, 3600000);
+	setInterval(updateSolar, 3600000);
 
 	//Add all updates that happen at midnight
-	full_date_g.textContent = d.toLocalDateString();
+	ID_FULL_DATE_G.textContent = date.toLocalDateString();
 
 }
 
-function maghrib() {
+function updateHijri() {
 
-	setInterval(maghrib, 3600000);
+	//setTimeout(ms left until tommorow's maghrib);
 
 	//Add all hijree updates that happen at sunset
-	weekday.textContent = d.toLocaleString("ar-SA-u-ca-islamic-umalqura", {weekday:"long"});
+	ID_WEEKDAY.textContent = date.toLocaleString("ar-SA-u-ca-islamic-umalqura", {weekday:"long"});
 	
 }
