@@ -4,7 +4,7 @@ const API_DEBUG = false;
 
 /* API CLIENT CODE 
 
-	Makes calls to the the library https://apis.google.com/js/api.js
+	Makes calls to the library https://apis.google.com/js/api.js
 
 	All code in this file is not a derivative of quickstart (or reference samples) code
 	Written using the library's reference docs
@@ -26,8 +26,8 @@ const API_DEBUG = false;
 
 if (API_DEBUG) {
 
-	/* string client id, initialized to dummy value */
-	const CLIENT_ID = 1;
+	/* string client id */
+	const CLIENT_ID = "";
 
 	/* one of:
 		"https://www.googleapis.com/auth/spreadsheets.readonly"
@@ -36,7 +36,7 @@ if (API_DEBUG) {
 	const SCOPE_STR = "";
 
 	/* string they need */
-	const DISC_DOC = "https://sheets.googleapis.com/$discovery/rest?version=v4";
+	const DISC_DOC = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
 
 	const INIT = {discoveryDocs:[DISC_DOC], clientId:CLIENT_ID, scopes:SCOPE_STR};
 
@@ -65,7 +65,7 @@ if (API_DEBUG) {
 
 /* CLOCK CODE
 
-	Code controlling date and times comes after:
+	Code controlling date and times must execute after:
 		loading API client & auth libraries
 		logging in
 		making requests for current prayer times
